@@ -74,6 +74,7 @@ const AuthPage = ({ type }: { type: "login" | "signup" }) => {
             const token = await res.user?.getIdToken();
             const isAuthenticated = await createSession(token);
             if (isAuthenticated) {
+              localStorage.setItem("agentware-token", token);
               router.push("/");
               toastMessage("success", "Logged in successfully");
             }

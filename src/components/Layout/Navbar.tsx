@@ -48,6 +48,7 @@ const Navbar = () => {
         toastMessage("success", "Logged out successfully");
         handleMenuClose();
         router.push("/");
+        localStorage.clear();
       }
     } catch (err) {
       toastMessage("error", err as string);
@@ -74,31 +75,33 @@ const Navbar = () => {
         </Link>
       </Box>
 
-      <Box sx={NavlinksContainer}>
-        {NAVLINKS.map((link: NavlinksType) => {
-          const Icon = pathname === link.path ? link.activeIcon : link.icon;
+      {!!localStorage?.getItem("agentware-token") && (
+        <Box sx={NavlinksContainer}>
+          {NAVLINKS.map((link: NavlinksType) => {
+            const Icon = pathname === link.path ? link.activeIcon : link.icon;
 
-          return (
-            <Link key={link.path} href={link.path} style={LinkStyle}>
-              <IconButton
-                sx={{
-                  color: pathname === link.path ? "primary.main" : "inherit",
-                  backgroundColor:
-                    pathname === link.path
-                      ? "rgba(0, 0, 0, 0.1)"
-                      : "transparent",
-                  transition: "background 0.3s ease-in-out",
-                }}
-              >
-                {<Icon fontSize="medium" />}
-              </IconButton>
-            </Link>
-          );
-        })}
-        <IconButton sx={{ color: "inherit" }} onClick={handleMenuClick}>
-          <PersonOutline fontSize="medium" />
-        </IconButton>
-      </Box>
+            return (
+              <Link key={link.path} href={link.path} style={LinkStyle}>
+                <IconButton
+                  sx={{
+                    color: pathname === link.path ? "primary.main" : "inherit",
+                    backgroundColor:
+                      pathname === link.path
+                        ? "rgba(0, 0, 0, 0.1)"
+                        : "transparent",
+                    transition: "background 0.3s ease-in-out",
+                  }}
+                >
+                  {<Icon fontSize="medium" />}
+                </IconButton>
+              </Link>
+            );
+          })}
+          <IconButton sx={{ color: "inherit" }} onClick={handleMenuClick}>
+            <PersonOutline fontSize="medium" />
+          </IconButton>
+        </Box>
+      )}
       <Menu
         anchorEl={anchorEl}
         open={open}
