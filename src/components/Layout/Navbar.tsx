@@ -13,7 +13,7 @@ import {
 import { signOut } from "firebase/auth";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { removeSession } from "@/actions/auth-action";
 import { firebaseAuth } from "@/lib/firebase/firebase";
@@ -29,7 +29,12 @@ const Navbar = () => {
   const router = useRouter();
   const [menuLoader, setMenuLoader] = useState<boolean>(false);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
   const open = Boolean(anchorEl);
+
+  useEffect(() => {
+    setIsLoggedIn(!!localStorage?.getItem("agentware-token"));
+  });
 
   const handleMenuClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
@@ -49,6 +54,7 @@ const Navbar = () => {
         handleMenuClose();
         router.push("/");
         localStorage.clear();
+        setIsLoggedIn(false);
       }
     } catch (err) {
       toastMessage("error", err as string);
@@ -75,7 +81,7 @@ const Navbar = () => {
         </Link>
       </Box>
 
-      {!!localStorage?.getItem("agentware-token") && (
+      {isLoggedIn && (
         <Box sx={NavlinksContainer}>
           {NAVLINKS.map((link: NavlinksType) => {
             const Icon = pathname === link.path ? link.activeIcon : link.icon;
