@@ -12,26 +12,6 @@ const compat = new FlatCompat({
 const eslintConfig = [
   ...compat.extends("next/core-web-vitals", "next/typescript"),
   {
-    rules: {
-      "import/order": [
-        "error",
-        {
-          groups: [
-            ["builtin", "external"],
-            ["internal"],
-            ["sibling", "parent"],
-            ["index"],
-          ],
-          alphabetize: {
-            order: "asc",
-            caseInsensitive: true,
-          },
-          "newlines-between": "always",
-        },
-      ],
-    },
-  },
-  {
     ignores: ["node_modules/*", "build/*", "public/*", "dist/*", ".next/*"],
   },
 ];

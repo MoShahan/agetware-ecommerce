@@ -8,5 +8,6 @@ module.exports = {
       },
     ],
     "@babel/preset-typescript", // For TypeScript syntax
+    "next/babel",
   ],
 };

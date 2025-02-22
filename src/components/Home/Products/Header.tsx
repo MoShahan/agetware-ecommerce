@@ -10,9 +10,9 @@ import {
 } from "@mui/material";
 import React, { useEffect, useState } from "react";
 
-import { HeaderContainer, RoundedInputStyle } from "./style";
-
 import { EachProduct } from "@/utils/type";
+
+import { HeaderContainer, RoundedInputStyle } from "./style";
 
 type Props = {
   searchWord: string;
