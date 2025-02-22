@@ -1,5 +1,7 @@
 # E-Commerce App with Next.js
 
+# Live Link - https://agetware-ecommerce.vercel.app/
+
 This is a fully functional e-commerce web application built using Next.js, Material UI (MUI), Firebase Authentication, and other modern web technologies. The app allows users to browse products, add them to their cart, checkout, and even manage products in the admin panel.
 
 ## Features
