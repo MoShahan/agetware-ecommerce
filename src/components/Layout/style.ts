@@ -17,5 +17,8 @@ export const NavbarContainer: SxProps = {
 export const NavlinksContainer: SxProps = {
   display: "flex",
   alignItems: "center",
-  gap: 2,
+  gap: {
+    xs: 1,
+    md: 2,
+  },
 };

@@ -60,8 +60,16 @@ const Navbar = () => {
     <Box sx={NavbarContainer}>
       <Box>
         <Link href={"/"} style={LinkStyle}>
-          <Typography fontSize={45} fontWeight="800">
-            SHOP.CO
+          <Typography
+            sx={{
+              fontSize: {
+                xs: "1.5rem",
+                md: "3rem",
+              },
+            }}
+            fontWeight="800"
+          >
+            AGET.CO
           </Typography>
         </Link>
       </Box>
